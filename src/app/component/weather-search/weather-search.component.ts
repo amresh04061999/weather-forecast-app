@@ -47,6 +47,7 @@ export class WeatherSearchComponent implements OnInit {
           error: (error) => {
             this.errorMessage = error;
             this.weatherDetails = null;
+            this.isSubmit = false;
           },
         });
       }
