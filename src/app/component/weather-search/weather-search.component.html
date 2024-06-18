@@ -15,12 +15,15 @@
       />
       <button type="submit" class="btn btn-info ms-3 text-white">SEARCH</button>
     </div>
+    @if(isSubmit && (searchForm.get('city')?.errors?.["required"] )){
+    <div class="text-danger">This field is required.</div>
+    }
   </form>
 </div>
-@if(isSubmit){
+@if(isloading){
   <div class="container mt-2 text-center">loading...</div>
   }
-  @if(!isSubmit){
+  @if(!isloading){
 
     <app-weather-display [weatherDetails]="weatherDetails"></app-weather-display>
   }

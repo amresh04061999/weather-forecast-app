@@ -21,12 +21,14 @@ export class WeatherSearchComponent implements OnInit {
   public weatherDetails: any;
   public errorMessage: any;
   public isSubmit: boolean;
+  public isloading:boolean;
   constructor(
     private _weatherService: WeatherApiService,
     private _fb: FormBuilder
   ) {
     this.errorMessage = null;
     this.isSubmit = false;
+    this.isloading=false
     this.searchForm = this._fb.group({
       city: ['', Validators.required],
     });
@@ -35,6 +37,7 @@ export class WeatherSearchComponent implements OnInit {
   searchWeather(): void {
     this.isSubmit = true;
     if (this.searchForm.valid) {
+      this.isloading=true
       const city = this.searchForm.get('city')?.value;
       if (city) {
         this._weatherService.getWeatherDetails(city).subscribe({
@@ -42,12 +45,14 @@ export class WeatherSearchComponent implements OnInit {
             this.weatherDetails = data;
             this.searchForm.reset();
             this.isSubmit = false;
+            this.isloading=false;
             this.errorMessage = null;
           },
           error: (error) => {
             this.errorMessage = error;
             this.weatherDetails = null;
             this.isSubmit = false;
+            this.isloading=false
           },
         });
       }
