@@ -1,0 +1,8 @@
+.weather__card {
+  width: 700px;
+  padding: 40px 30px;
+  background-color: #eeeeee;
+  border-radius: 30px;
+  border: 2px solid lightblue;
+  color: #3c4048;
+}
