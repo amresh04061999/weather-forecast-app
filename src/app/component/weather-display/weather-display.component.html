@@ -1,0 +1,41 @@
+@if(weatherDetails){
+<!-- Weather -->
+<div class="container mt-2">
+  <div class="d-flex flex-row justify-content-center align-items-center">
+    <div class="weather__card">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="p-3">
+          <h2>{{ formatTem(weatherDetails.main.temp) }}</h2>
+        </div>
+        <div class="p-2 ms-4">
+          <h5 class="mt-2">{{ getFormattedDate() }}</h5>
+          <h3>{{ weatherDetails.name }}</h3>
+        </div>
+      </div>
+      <div
+        class="weather__status d-flex flex-row justify-content-center align-items-center mt-2"
+      >
+        <div
+          class="p-4 d-flex justify-content-centeralign-items-center text-nowrap"
+        >
+          <span class="fw-bold">Description :</span
+          ><span>{{ weatherDetails.weather[0].description }}</span>
+        </div>
+        <div
+          class="p-4 d-flex justify-content-center align-items-center text-nowrap"
+        >
+          <span class="fw-bold">Humidity :</span
+          ><span>{{ weatherDetails.main.humidity }}%</span>
+        </div>
+        <div
+          class="p-4 d-flex justify-content-center align-items-center text-nowrap"
+        >
+          <span class="fw-bold"> Wind Speed :</span
+          ><span>{{ weatherDetails.wind.speed }} m/s</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+}

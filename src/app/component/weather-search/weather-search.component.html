@@ -1,0 +1,39 @@
+<nav class="bg-light">
+  <div class="search-containe p-4">
+    <h1 class="text-primary text-center">Weather Forecast application</h1>
+  </div>
+</nav>
+<div class="d-flex mt-3 justify-content-center align-items-center mb-3">
+  <form [formGroup]="searchForm" (ngSubmit)="searchWeather()" class="w-50">
+    <div class="d-flex">
+      <input
+        type="text"
+        class="form-control"
+        id="cityname"
+        placeholder="Enter your city or zip code "
+        formControlName="city"
+      />
+      <button type="submit" class="btn btn-info ms-3 text-white">SEARCH</button>
+    </div>
+    @if(isSubmit && (searchForm.get('city')?.errors?.["required"] )){
+    <div class="text-danger">This field is required.</div>
+    }
+  </form>
+</div>
+@if(isloading){
+  <div class="container mt-2 text-center">loading...</div>
+  }
+  @if(!isloading){
+
+    <app-weather-display [weatherDetails]="weatherDetails"></app-weather-display>
+  }
+@if (errorMessage) {
+<div class="container mt-2">
+  <div class="d-flex flex-row justify-content-center align-items-center">
+    <div class="weather__card d-flex justify-content-center align-items-center">
+      <div class="text-danger fw-bold">{{ errorMessage }}</div>
+    </div>
+  </div>
+</div>
+
+}
